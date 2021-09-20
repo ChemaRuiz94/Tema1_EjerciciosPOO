@@ -43,12 +43,14 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
                     break;
                 case 2:
                     Console.WriteLine("Opcion 2");
+                    incrementarFecha();
                     break;
                 case 3:
-                    Console.WriteLine("Opcion 4");
+                    Console.WriteLine("Opcion 3");
                     break;
                 case 4:
-                    Console.WriteLine("Opcion 3");
+                    Console.WriteLine("Opcion 4");
+                    ResultadoCompararFechas(compararFechas());
                     break;
                 case 5:
                     Console.WriteLine("Opcion 5");
@@ -60,13 +62,102 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
             }
         }
 
+        /**
+         * Metodo para la opcion 1 del ejercicio
+         */
         public static void diaDeLaSemana()
         {
-
+            string dia = "";
             DateTime fecha = pedirFechaUsuario();
 
-            Console.WriteLine("Esa fecha corresponde a " + fecha.DayOfWeek.ToString());
+            switch (fecha.DayOfWeek.ToString())
+            {
+                case "Monday":
+                    dia = "Lunes";
+                    break;
+                case "Tuesday":
+                    dia = "Martes";
+                    break;
+                case "Wednesday":
+                    dia = "Miercoles";
+                    break;
+                case "Thursday":
+                    dia = "Jueves";
+                    break;
+                case "Friday":
+                    dia = "Viernes";
+                    break;
+                case "Saturday":
+                    dia = "Sabado";
+                    break;
+                case "Sunday":
+                    dia = "Domingo";
+                    break;
+                default:
+                    dia = "ERROR";
+                    break;
 
+            }
+
+            Console.WriteLine("Esa fecha corresponde a " + dia);
+
+        }
+
+        /**
+         * Metodo para la opcion 2 del ejercicio
+         */
+        public static void incrementarFecha()
+        {
+            DateTime fecha = pedirFechaUsuario();
+            Console.WriteLine("En cuantos dias quieres incrementar esta fecha");
+            double incremento = double.Parse(Console.ReadLine());
+
+            DateTime nuevaFecha = fecha.AddDays(incremento);
+            Console.WriteLine("Esa fecha corresponde a " + nuevaFecha.ToString());
+        }
+
+
+       
+
+        /**
+         * Metodo para la opcion 4 del ejercicio
+         * De dos fechas dadas, decir si una es anterior, igual o posterior a la otra
+         * Devuelve un entero con el resultado 
+         */
+        public static int compararFechas()
+        {
+            int resul;
+            DateTime fecha1 = pedirFechaUsuario();
+            Console.WriteLine("Ahora la fecha que quieres comparar");
+            DateTime fecha2 = pedirFechaUsuario();
+
+            
+
+            return resul = DateTime.Compare(fecha1, fecha2);
+        }
+
+        /**
+         * Metodo para la opcion 4 del ejercicio
+         * De dos fechas dadas, decir si una es anterior, igual o posterior a la otra
+         * Recibe un entero y pinta el resultado
+         */
+        public static void ResultadoCompararFechas(int resul)
+        {
+            switch (resul)
+            {
+                case < 0:
+                    Console.WriteLine("La primera fecha es anterior a la segunda");
+                    break;
+                case 0:
+                    Console.WriteLine("Las dos fechas son iguales");
+                    break;
+                case > 0:
+                    Console.WriteLine("La segunda fecha es anterior a la primera");
+                    break;
+                default:
+                    Console.WriteLine("ERROR");
+                    break;
+            }
         }
 
         /**
