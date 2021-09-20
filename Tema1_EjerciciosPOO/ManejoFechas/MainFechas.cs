@@ -34,7 +34,7 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
 
         public void menu()
         {
-            int op = PedirOpcionUsuario();
+            int op = int.Parse(Console.ReadLine());
             switch (op)
             {
                 case 1:
@@ -181,14 +181,6 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
             }
         }
 
-        /**
-         * Metodo para pedir  datos al usuario 
-         * y devolver la opcion del menu
-         */
-        public static int PedirOpcionUsuario()
-        {
-            return int.Parse(Console.ReadLine());
-        }
 
         /**
          * Metodo para pedir  fecha al usuario 

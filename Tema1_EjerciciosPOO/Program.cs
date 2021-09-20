@@ -23,7 +23,7 @@ namespace Tema1_EjerciciosPOO
 
                 Console.WriteLine("Escoge una opcion: ");
                 Console.WriteLine("______________________________");
-                op = PedirOpcionUsuario();
+                op = int.Parse(Console.ReadLine());
 
                 if (op >= 0 && op <= 4)
                 {
@@ -31,12 +31,14 @@ namespace Tema1_EjerciciosPOO
                     {
                         case 1:
                             Console.WriteLine("Opcion 1");
-                            ManejoFechas.MainFechas menu = new ManejoFechas.MainFechas();
-                            menu.pintarMenu();
-                            menu.menu();
+                            ManejoFechas.MainFechas menu1 = new ManejoFechas.MainFechas();
+                            menu1.pintarMenu();
+                            menu1.menu();
                             break;
                         case 2:
                             Console.WriteLine("Opcion 2");
+                            EjercicioLibros.MenuLibros menu2 = new EjercicioLibros.MenuLibros();
+                            menu2.menu();
                             break;
                         case 3:
                             Console.WriteLine("Opcion 3");
@@ -59,9 +61,6 @@ namespace Tema1_EjerciciosPOO
 
         }
 
-        public static int PedirOpcionUsuario()
-        {
-            return int.Parse(Console.ReadLine());
-        }
+        
     }
 }
