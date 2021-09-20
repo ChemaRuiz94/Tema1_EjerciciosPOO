@@ -55,6 +55,7 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
                     break;
                 case 5:
                     Console.WriteLine("Opcion 5");
+                    Console.WriteLine("SIN ACABAR ");
                     break;
                 default:
                     Console.WriteLine("Opcion Incorrecta");
@@ -144,14 +145,14 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
          * De dos fechas dadas, decir si una es anterior, igual o posterior a la otra
          * Devuelve un entero con el resultado 
          */
-            public static int compararFechas()
+        public static int compararFechas()
         {
             int resul;
             DateTime fecha1 = pedirFechaUsuario();
             Console.WriteLine("Ahora la fecha que quieres comparar");
             DateTime fecha2 = pedirFechaUsuario();
 
-            
+
 
             return resul = DateTime.Compare(fecha1, fecha2);
         }
@@ -230,7 +231,7 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
             return fecha;
         }
 
-        public static DateTime pedirFechaUsuarioFormatoCorto() 
+        public static DateTime pedirFechaUsuarioFormatoCorto()
         {
             int anio;
             int mes;
