@@ -47,6 +47,7 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
                     break;
                 case 3:
                     Console.WriteLine("Opcion 3");
+                    diferenciarFechas();
                     break;
                 case 4:
                     Console.WriteLine("Opcion 4");
@@ -64,6 +65,7 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
 
         /**
          * Metodo para la opcion 1 del ejercicio
+         * Dada una fecha por el usuario, devolver en español el dia de la semana
          */
         public static void diaDeLaSemana()
         {
@@ -105,6 +107,8 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
 
         /**
          * Metodo para la opcion 2 del ejercicio
+         * Dada una fecha por el usuario, incrementarla en 
+         * un numero de dias dado por el usuario y devolver esa fecha
          */
         public static void incrementarFecha()
         {
@@ -117,14 +121,30 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
         }
 
 
-       
+        /**
+         * Metodo para la opcion 3 del ejercicio
+         * Devolver en dias meses y años la diferencia entre dos fechas
+         */
+        public static void diferenciarFechas()
+        {
+            /**
+            DateTime fecha1 = pedirFechaUsuario();
+            Console.WriteLine("Ahora la fecha que quieres comparar");
+            DateTime fecha2 = pedirFechaUsuario();
+
+            System.TimeSpan fecha3 = fecha1.Subtract(fecha2);
+            Console.WriteLine("Hay " + fecha3.ToString() + " de diferencia");
+            */
+            Console.WriteLine("SIN ACABAR - FALLO: DEVUELVE DE FORMATO EN HORAS");
+
+        }
 
         /**
          * Metodo para la opcion 4 del ejercicio
          * De dos fechas dadas, decir si una es anterior, igual o posterior a la otra
          * Devuelve un entero con el resultado 
          */
-        public static int compararFechas()
+            public static int compararFechas()
         {
             int resul;
             DateTime fecha1 = pedirFechaUsuario();
@@ -187,6 +207,43 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
                     Console.WriteLine("Introduce el año");
                     anio = int.Parse(Console.ReadLine());
                 } while (anio < 1 || anio > 9999);
+
+                do
+                {
+                    Console.WriteLine("Introduce el mes");
+                    mes = int.Parse(Console.ReadLine());
+                } while (mes < 1 || mes > 12);
+
+                do
+                {
+                    Console.WriteLine("Introduce el dia");
+                    dia = int.Parse(Console.ReadLine());
+                } while (dia < 1 || dia > 31);
+
+                fecha = new DateTime(anio, mes, dia);
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Fecha introducida erronea");
+                throw;
+            }
+            return fecha;
+        }
+
+        public static DateTime pedirFechaUsuarioFormatoCorto() 
+        {
+            int anio;
+            int mes;
+            int dia;
+            DateTime fecha = new DateTime();
+
+            try
+            {
+                do
+                {
+                    Console.WriteLine("Introduce el año");
+                    anio = int.Parse(Console.ReadLine());
+                } while (anio < 01 || anio > 99);
 
                 do
                 {
