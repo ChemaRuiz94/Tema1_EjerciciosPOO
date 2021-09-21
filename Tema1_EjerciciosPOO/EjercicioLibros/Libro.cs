@@ -51,5 +51,7 @@ namespace Tema1_EjerciciosPOO.EjercicioLibros
             this.editorial = editorial;
 
         }
+
+       
     }
 }
