@@ -71,7 +71,7 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
         public static void diaDeLaSemana()
         {
             string dia = "";
-            DateTime fecha = pedirFechaUsuario();
+            DateTime fecha = pedirFecha();
 
             switch (fecha.DayOfWeek.ToString())
             {
@@ -113,7 +113,7 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
          */
         public static void incrementarFecha()
         {
-            DateTime fecha = pedirFechaUsuario();
+            DateTime fecha = pedirFecha();
             Console.WriteLine("En cuantos dias quieres incrementar esta fecha");
             double incremento = double.Parse(Console.ReadLine());
 
@@ -128,16 +128,28 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
          */
         public static void diferenciarFechas()
         {
-            /**
-            DateTime fecha1 = pedirFechaUsuario();
+
+            DateTime fecha1 = pedirFecha();
             Console.WriteLine("Ahora la fecha que quieres comparar");
-            DateTime fecha2 = pedirFechaUsuario();
+            DateTime fecha2 = pedirFecha();
 
-            System.TimeSpan fecha3 = fecha1.Subtract(fecha2);
-            Console.WriteLine("Hay " + fecha3.ToString() + " de diferencia");
-            */
-            Console.WriteLine("SIN ACABAR - FALLO: DEVUELVE DE FORMATO EN HORAS");
+            int anio, mes, dia;
 
+            if (fecha1.Year < fecha2.Year || fecha1.Month < fecha2.Month || fecha1.Day < fecha2.Day)
+            {
+                var diferencia = fecha2 - fecha1;
+                anio = (int)(diferencia.TotalDays / 365.25);
+                mes = (int)(((diferencia.TotalDays / 365.25) - anio) * 12);
+                dia = (int)(fecha2.Day - fecha1.Day);
+            }
+            else
+            {
+                var diferencia = fecha1 - fecha2;
+                anio = (int)(diferencia.TotalDays / 365.25);
+                mes = (int)(((diferencia.TotalDays / 365.25) - anio) * 12);
+                dia = (int)(fecha1.Day - fecha2.Day);
+            }
+            Console.WriteLine("Hay " + anio+ " años " + mes + " meses y " + dia + " dias de diferencia entre las fechas");
         }
 
         /**
@@ -148,11 +160,9 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
         public static int compararFechas()
         {
             int resul;
-            DateTime fecha1 = pedirFechaUsuario();
+            DateTime fecha1 = pedirFecha();
             Console.WriteLine("Ahora la fecha que quieres comparar");
-            DateTime fecha2 = pedirFechaUsuario();
-
-
+            DateTime fecha2 = pedirFecha();
 
             return resul = DateTime.Compare(fecha1, fecha2);
         }
@@ -181,47 +191,27 @@ namespace Tema1_EjerciciosPOO.ManejoFechas
             }
         }
 
-
-        /**
-         * Metodo para pedir  fecha al usuario 
-         * y devolver la una fecha con formato
-         */
-        public static DateTime pedirFechaUsuario()
+        public static DateTime pedirFecha()
         {
-            int anio;
-            int mes;
-            int dia;
             DateTime fecha = new DateTime();
+            bool correcto;
 
-            try
+            do
             {
-                do
-                {
-                    Console.WriteLine("Introduce el año");
-                    anio = int.Parse(Console.ReadLine());
-                } while (anio < 1 || anio > 9999);
+                Console.WriteLine("Introduce una fecha");
+                correcto = DateTime.TryParse(Console.ReadLine(), out fecha);
 
-                do
+                if (!correcto)
                 {
-                    Console.WriteLine("Introduce el mes");
-                    mes = int.Parse(Console.ReadLine());
-                } while (mes < 1 || mes > 12);
+                    Console.WriteLine("Fecha no valida");
+                }
+            } while (!correcto);
 
-                do
-                {
-                    Console.WriteLine("Introduce el dia");
-                    dia = int.Parse(Console.ReadLine());
-                } while (dia < 1 || dia > 31);
-
-                fecha = new DateTime(anio, mes, dia);
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Fecha introducida erronea");
-                throw;
-            }
             return fecha;
         }
+
+
+      
 
         public static DateTime pedirFechaUsuarioFormatoCorto()
         {
