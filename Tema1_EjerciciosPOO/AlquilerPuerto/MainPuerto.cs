@@ -23,8 +23,7 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
             Console.WriteLine("     (Seleccione un barco de la lista y calcule el alquiler del amarre)");
             Console.WriteLine("4 -> SALIR");
             Console.WriteLine("______________________________");
-            Console.WriteLine("ESCOGE UNA OPCION DE ESTE EJERCICIO: ");
-            Console.WriteLine("______________________________");
+            
 
         }
 
@@ -44,12 +43,14 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
         {
             Puerto puerto = new Puerto();
             UtilsPuerto u = new UtilsPuerto();
+            Utils ut = new Utils();
             int op = 0;
 
             do
             {
                 pintarMenu();
-                op = int.Parse(Console.ReadLine());
+                op = ut.pedirNum("ESCOGE UNA OPCION DE ESTE EJERCICIO: ");
+                Console.WriteLine("____________________________________");
 
                 switch (op)
                 {
@@ -76,6 +77,7 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
         public void registrarTipoBarco(Puerto puerto)
         {
             UtilsPuerto u = new UtilsPuerto();
+            Utils ut = new Utils();
             int op, posi;
             Persona cliente;
             Barco barco;
@@ -84,7 +86,7 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
             do
             {
                 pintarSeleccionarTipoBarco();
-                op = int.Parse(Console.ReadLine());
+                op = ut.pedirNum(""); ;
                 switch (op)
                 {
                     case 1:

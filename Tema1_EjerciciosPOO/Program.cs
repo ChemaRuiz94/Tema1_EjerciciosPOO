@@ -9,21 +9,19 @@ namespace Tema1_EjerciciosPOO
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("EJERCICIOS TEMA 1 - CHEMA RUIZ");
+            
             int op = 0;
             bool salir = false;
+            Utils u = new Utils();
+
+            Console.WriteLine("EJERCICIOS TEMA 1 - CHEMA RUIZ");
             do
             {
-                Console.WriteLine("______________________________");
-                Console.WriteLine("1 -> Manejar Fechas");
-                Console.WriteLine("2 -> Clase Libros");
-                Console.WriteLine("3 -> Alquiler Puerto");
-                Console.WriteLine("4 -> Salir");
-                Console.WriteLine("______________________________");
+                u.pintarMenu();
 
-                Console.WriteLine("Escoge una opcion: ");
+                op = u.pedirNum("Escoge una opcion: ");
                 Console.WriteLine("______________________________");
-                op = int.Parse(Console.ReadLine());
+                
 
                 if (op >= 0 && op <= 4)
                 {

@@ -105,44 +105,47 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
 
         public int pedirAnioFabrica()
         {
+            Utils u = new Utils();
             int anio;
+
             do
             {
-                Console.WriteLine("Introduce el año de fabricacion del barco");
-                anio = int.Parse(Console.ReadLine());
+                anio = u.pedirNum("Introduce el año de fabricacion del barco");
             } while (anio < 0 || anio > 9999);
             return anio;
         }
 
         public int pedirMastiles()
         {
+            Utils u = new Utils();
             int mastiles;
+
             do
             {
-                Console.WriteLine("Introduce la cantidad de mastiles del barco");
-                mastiles = int.Parse(Console.ReadLine());
+                mastiles = u.pedirNum("Introduce la cantidad de mastiles del barco");
             } while (mastiles < 0);
             return mastiles;
         }
 
         public int pedirCV()
         {
+            Utils u = new Utils();
             int cv;
+
             do
             {
-                Console.WriteLine("Introduce la cantidad de caballos que tiene el barco");
-                cv = int.Parse(Console.ReadLine());
+                cv = u.pedirNum("Introduce la cantidad de caballos que tiene el barco");
             } while (cv < 0);
             return cv;
         }
 
         public int pedirPosi()
         {
+            Utils u = new Utils();
             int posi;
             do
             {
-                Console.WriteLine("Introduce la posicion del barco que quieres seleccionar");
-                posi = int.Parse(Console.ReadLine());
+                posi = u.pedirNum("Introduce la posicion del barco que quieres seleccionar");
                 posi--;
             } while (posi < 0);
             return posi;
@@ -150,38 +153,21 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
 
         public static DateTime pedirFechaInicio()
         {
-            DateTime fecha = new DateTime();
-            bool correcto;
+            ManejoFechas.UtilsFechas u = new ManejoFechas.UtilsFechas();
+           
+            Console.WriteLine("Introduce la fecha inicial del amarre");
+            DateTime fecha = u.pedirFecha();
 
-            do
-            {
-                Console.WriteLine("Introduce la fecha inicial del amarre");
-                correcto = DateTime.TryParse(Console.ReadLine(), out fecha);
-
-                if (!correcto)
-                {
-                    Console.WriteLine("Fecha no valida");
-                }
-            } while (!correcto);
 
             return fecha;
         }
 
         public static DateTime pedirFechaFin()
         {
-            DateTime fecha = new DateTime();
-            bool correcto;
-
-            do
-            {
-                Console.WriteLine("Introduce una fecha hasta la que permanecerá el amarre");
-                correcto = DateTime.TryParse(Console.ReadLine(), out fecha);
-
-                if (!correcto)
-                {
-                    Console.WriteLine("Fecha no valida");
-                }
-            } while (!correcto);
+            ManejoFechas.UtilsFechas u = new ManejoFechas.UtilsFechas();
+            
+            Console.WriteLine("Introduce una fecha hasta la que permanecerá el amarre");
+            DateTime fecha = u.pedirFecha();
 
             return fecha;
         }
@@ -203,17 +189,17 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
 
         public bool CheckDNI(string dni)
         {
-            //Comprobamos si el DNI tiene 9 digitos
+            
             if (dni.Length != 9)
             {
                 //No es un DNI Valido
                 return false;
             }
 
-            //Extraemos los números y la letra
+            
             string dniNumbers = dni.Substring(0, dni.Length - 1);
             string dniLeter = dni.Substring(dni.Length - 1, 1);
-            //Intentamos convertir los números del DNI a integer
+            
             var numbersValid = int.TryParse(dniNumbers, out int dniInteger);
             if (!numbersValid)
             {
@@ -225,14 +211,14 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
                 //La letra del DNI es incorrecta
                 return false;
             }
-            //DNI Valido :)
+            //DNI Valido 
             return true;
         }
 
 
         public string CalculateDNILeter(int dniNumbers)
         {
-            //Cargamos los digitos de control
+            
             string[] control = { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E" };
             var mod = dniNumbers % 23;
             return control[mod];
