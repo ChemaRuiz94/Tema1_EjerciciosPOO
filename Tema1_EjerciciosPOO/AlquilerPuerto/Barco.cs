@@ -9,62 +9,70 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
     class Barco
     {
         private string matricula;
+        private double eslora;
+        private int anioFabrica;
 
         public string Matricula
         {
             get { return matricula; }
-            set { matricula = value; }
+            set { matricula = pedirMatricula(); }
         }
 
-        private int eslora;
+        
 
-        public int Eslora
+        public double Eslora
         {
             get { return eslora; }
-            set { eslora = value; }
+            set { eslora = pedirEslora(); }
         }
 
-        private int anioFabrica;
+        
 
         public int AnioFabrica
         {
             get { return anioFabrica; }
-            set { anioFabrica = value; }
+            set { anioFabrica = pedirAnioFabrica(); }
         }
 
-        private int mastiles;
 
-        public int Mastiles
+        public String pedirMatricula()
         {
-            get { return mastiles; }
-            set { mastiles = value; }
+            String matricula;
+            do
+            {
+                Console.WriteLine("Introduce la matricula del barco");
+                matricula = Console.ReadLine();
+            } while (matricula.Equals("") || matricula.Equals(" "));
+            return matricula;
         }
 
-        private int cv;
-
-        public int Cv
+        /**
+         * Eslora en double
+         * para almacenar los metros
+         */
+        public double pedirEslora()
         {
-            get { return cv; }
-            set { cv = value; }
+            double eslora;
+            do
+            {
+                Console.WriteLine("Introduce los metros de eslora del barco");
+                eslora = double.Parse(Console.ReadLine());
+            } while (eslora < 0);
+            return eslora;
         }
 
-        private int camarotes;
-
-        public int Camarotes
+        public int pedirAnioFabrica()
         {
-            get { return camarotes; }
-            set { camarotes = value; }
+            int anio;
+            do
+            {
+                Console.WriteLine("Introduce el año de fabricacion del barco");
+                anio = int.Parse(Console.ReadLine());
+            } while (anio < 0 || anio > 99);
+            return anio;
         }
 
-        private string tipo;
-
-        public string Tipo
-        {
-            get { return tipo; }
-            set { tipo = value; }
-        }
-
-        public Barco(string matricula, int eslora, int anioFabrica)
+        public Barco(string matricula, double eslora, int anioFabrica)
         {
             this.matricula = matricula;
             this.eslora = eslora;
