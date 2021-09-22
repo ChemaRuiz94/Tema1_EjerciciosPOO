@@ -53,5 +53,9 @@ namespace Tema1_EjerciciosPOO.EjercicioLibros
         }
 
        
+        public void pintarLibro()
+        {
+            Console.WriteLine("TITULO: " + this.Titulo + ", AUTOR: " + this.Autor + ", ESTILO: " + this.Estilo + ", EDITORIAL: " + this.Editorial);
+        }
     }
 }
