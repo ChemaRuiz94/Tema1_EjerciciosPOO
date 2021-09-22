@@ -23,19 +23,19 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
             set { listaClientes = value; }
         }
 
-        private ArrayList listaBarcos = new ArrayList();
+        private List<Barco> listaBarcos = new List<Barco>();
 
-        public ArrayList ListaBarcos
+        public List<Barco> ListaBarcos
         {
-            get { return listaClientes; }
-            set { listaClientes = value; }
+            get { return listaBarcos; }
+            set { listaBarcos = value; }
 
         }
 
 
-        private ArrayList listaAlquileres = new ArrayList();
+        private List<Alquiler> listaAlquileres = new List<Alquiler>();
 
-        public ArrayList ListaAlquileres
+        public List<Alquiler> ListaAlquileres
         {
             get { return listaAlquileres; }
             set { listaAlquileres = value; }
@@ -54,6 +54,36 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
         public void addAlquiler(Alquiler alquiler) 
         {
             this.listaAlquileres.Add(alquiler);
+        }
+
+        public void mostrarListaAlquiler()
+        {
+            foreach (Alquiler item in listaAlquileres)
+            {
+                pintarAlquiler(item);
+            }
+        }
+
+
+        public void pintarAlquiler(Alquiler alquiler)
+        {
+            Console.WriteLine("NOMBRE DEL PROPIETARIO: " + alquiler.NombreAlqui + ", DNI DEL PROPIETARIO: " + alquiler.DniAlqui + ", " +
+                "\n FECHA DE ENTRADA: " + alquiler.FechaInicio + ", FECHA DE SALIDA: " +alquiler.FechaFin +", " +
+                "\n POSICION: " + (alquiler.PosicionAmarre + 1) + ", MATRICULA DEL BARCO: " + alquiler.MatriculaAlqui );
+            Console.WriteLine("_________________________________________________________");
+        }
+
+        public double calcularAlquilerPuerto(int posi) 
+        {
+            double resultado;
+
+            Alquiler alquiler = listaAlquileres[posi];
+            Barco barco = listaBarcos[posi];
+
+            //instanceOf
+
+            resultado = alquiler.calcularAlquilerEspecial(barco);
+            return resultado;
         }
     }
 

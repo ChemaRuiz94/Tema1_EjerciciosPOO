@@ -13,19 +13,9 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
         public int Mastiles
         {
             get { return mastiles; }
-            set { mastiles = pedirMastiles(); }
+            set { mastiles = value; }
         }
 
-        public int pedirMastiles()
-        {
-            int mastiles;
-            do
-            {
-                Console.WriteLine("Introduce la cantidad de mastiles del velero");
-                mastiles = int.Parse(Console.ReadLine());
-            } while (mastiles < 0);
-            return mastiles;
-        }
 
         public Velero(string matricula, double eslora, int anioFabrica, int mastiles) : base(matricula, eslora, anioFabrica)
         {

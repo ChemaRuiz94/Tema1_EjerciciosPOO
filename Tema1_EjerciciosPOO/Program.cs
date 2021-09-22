@@ -42,6 +42,8 @@ namespace Tema1_EjerciciosPOO
                             break;
                         case 3:
                             Console.WriteLine("Opcion 3");
+                            AlquilerPuerto.MainPuerto menu3 = new AlquilerPuerto.MainPuerto();
+                            menu3.menu();
                             break;
                         case 4:
                             Console.WriteLine("Hasta pronto!");

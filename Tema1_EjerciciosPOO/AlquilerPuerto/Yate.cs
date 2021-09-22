@@ -14,36 +14,16 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
         public int Mastiles
         {
             get { return mastiles; }
-            set { mastiles = pedirMastiles(); }
+            set { mastiles = value; }
         }
 
         public int Cv
         {
             get { return cv; }
-            set { cv = pedirCV(); }
+            set { cv = value; }
         }
 
-        public int pedirMastiles()
-        {
-            int mastiles;
-            do
-            {
-                Console.WriteLine("Introduce la cantidad de mastiles del velero");
-                mastiles = int.Parse(Console.ReadLine());
-            } while (mastiles < 0);
-            return mastiles;
-        }
-
-        public int pedirCV()
-        {
-            int cv;
-            do
-            {
-                Console.WriteLine("Introduce la cantidad de caballos que tiene el deportivo");
-                cv = int.Parse(Console.ReadLine());
-            } while (cv < 0);
-            return cv;
-        }
+        
 
         public Yate(string matricula, double eslora, int anioFabrica, int cv, int mastiles) : base(matricula, eslora, anioFabrica)
         {

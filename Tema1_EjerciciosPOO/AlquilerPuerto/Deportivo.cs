@@ -12,21 +12,8 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
         public int Cv
         {
             get { return cv; }
-            set { cv = pedirCV(); }
+            set { cv = value; }
         }
-
-
-        public int pedirCV()
-        {
-            int cv;
-            do
-            {
-                Console.WriteLine("Introduce la cantidad de caballos que tiene el deportivo");
-                cv = int.Parse(Console.ReadLine());
-            } while (cv < 0);
-            return cv;
-        }
-
 
 
         public Deportivo(string matricula, double eslora, int anioFabrica, int cv) : base(matricula, eslora, anioFabrica)

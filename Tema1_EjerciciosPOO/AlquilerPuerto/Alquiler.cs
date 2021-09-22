@@ -10,6 +10,11 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
     {
 
         private string nombreAlqui;
+        private string dniAlqui;
+        private DateTime fechaInicio;
+        private DateTime fechaFin;
+        private int posicionAmarre;
+        private string matriculaAlqui;
 
         public string NombreAlqui
         {
@@ -17,7 +22,7 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
             set { nombreAlqui = value; }
         }
 
-        private string dniAlqui;
+
 
         public string DniAlqui
         {
@@ -25,7 +30,7 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
             set { dniAlqui = value; }
         }
 
-        private DateTime fechaInicio;
+
 
         public DateTime FechaInicio
         {
@@ -33,7 +38,7 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
             set { fechaInicio = value; }
         }
 
-        private DateTime fechaFin;
+
 
         public DateTime FechaFin
         {
@@ -41,7 +46,7 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
             set { fechaFin = value; }
         }
 
-        private int posicionAmarre;
+
 
         public int PosicionAmarre
         {
@@ -49,12 +54,53 @@ namespace Tema1_EjerciciosPOO.AlquilerPuerto
             set { posicionAmarre = value; }
         }
 
-        private string matriculaAlqui;
+
 
         public string MatriculaAlqui
         {
             get { return matriculaAlqui; }
             set { matriculaAlqui = value; }
+        }
+
+        public double calcularAlquilerNormal(Barco barco)
+        {
+            double tamanio, aux;
+
+            tamanio = (barco.Eslora * 10);
+
+            var diferencia = fechaFin - fechaInicio;
+            int dias = (int)(diferencia.TotalDays);
+
+            aux = (dias * tamanio);
+
+            return (aux * 12);
+        }
+
+        public double calcularAlquilerEspecial(Barco barco)
+        {
+            double resultado = calcularAlquilerNormal(barco);
+
+            var b = barco.GetType();
+
+            if (barco is Velero v)
+            {
+                resultado = resultado + v.Mastiles;
+                Console.WriteLine("Es un velero");
+            }
+
+            if (barco is Deportivo d)
+            {
+                resultado = resultado + d.Cv;
+                Console.WriteLine("Es un Deportivo");
+            }
+
+            if (barco is Yate y)
+            {
+                resultado = resultado + y.Cv + y.Mastiles;
+                Console.WriteLine("Es un Yate");
+            }
+
+            return resultado;
         }
 
         public Alquiler(string nombre, string dni, DateTime fechaInicio, DateTime fechaFin, int posi, string matricula)
